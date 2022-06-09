@@ -14,16 +14,27 @@
 <body>
     <div class="wrapper">
     <div class="container">
+        <form id="search-form">
+            <div class="row">
+                <div class="col-9">
+            <input type="search" placeholder="Type a city.." class="form-control"/> 
+        </div>
+        <div class="col-3">
+            <input type="submit" value="search" class="btn btn-primary" id="search"/> 
+        </div>
+        </div>
+        </form>
+
         <h1 class="cityName">London</h1>
-        <ul>
-            <li class="time">Last updated: Monday 9:00</li>
+        <ul class="time-weather">
+            <li >Last updated: <span id="time">Monday 9:00</span></li>
             <li class="weather-description">Clear sky</li>
         </ul>
         <div class="row">
             <div class="col-7">
-                <img src="#"> 
-                <span class="temperature-number">23</span>
-                <span class="units"><a class="active" id="Celsius">°C|</a><a class="active" id="Fah">°F</a>
+                <img id="icon" class="float-left"src="#"> 
+                <span id="temperature-number" class="temperature-number">23</span>
+                <span id="units"><a class="active" id="Celsius">°C|</a><a class="active" id="Fah">°F</a>
                 </span>
             </div>
             <div class="col-5">
@@ -39,7 +50,7 @@
         </div>
     </div>
     <footer>
-        <a href="https://github.com/KaiqiGeorge/My-weather-app">Open code source </a> by Kaiqi KaiqiGeorge
+        <a href="https://github.com/KaiqiGeorge/My-weather-app">Open code source </a> by Kaiqi George
     </footer>
 </div>
 
