@@ -49,9 +49,10 @@ li {
 }
 footer{
     text-align: center;
-    margin-left: -340px;
+    margin-left: -335px;
     position: relative;
-    margin-top: 4px;
+    margin-top: 6px;
+    
 }
 footer a{
     text-decoration: none;
