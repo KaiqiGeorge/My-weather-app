@@ -90,3 +90,11 @@ footer{
 .active:hover{
     text-decoration: none;
 }
+#weather-forecast{
+    color:rgb(135, 135, 135);
+    text-align: center;
+    margin-top: 25px;
+}
+#tempMin{
+    opacity: 0.65;
+}
