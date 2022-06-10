@@ -15,10 +15,54 @@
     let time = document.querySelector("#time");
    time.innerHTML= `${day}  ${hours}:${minutes}`;};
   time()
+
+  function formatDay(timestamp) {
+    let date = new Date(timestamp * 1000);
+    let day = date.getDay();
+    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  
+    return days[day];
+  }
     
- 
+ function displayWeatherForecast(response){
+ let weatherForecast= response.data.daily;
+ let newWeatherForcast=document.querySelector("#weather-forecast");
+ let weatherForecastHTML = `<div class=row>`;
+ weatherForecast.forEach(function(weatherForecastDay,index){
+     if(index<=5){
+        weatherForecastHTML = weatherForecastHTML+`
+        <div class="col-2">
+        <div id="weather-forecast-day">${formatDay(weatherForecastDay.dt)}</div>
+        <div id="weather-forecast-icon"><img src="http://openweathermap.org/img/wn/${
+            weatherForecastDay.weather[0].icon
+          }@2x.png"
+          alt=""
+          width="42"
+        /"/></div>
+        <div id="weather-forecast-tempMin">${Math.round(weatherForecastDay.temp.min)}°
+        </div>
+        <div id="weather-forecast-tempMax">${Math.round(weatherForecastDay.temp.max)}°
+        </div>
+        </div>
+        `;
+
+     }
+ });
+
+
+ weatherForecastHTML = weatherForecastHTML+`</div>`;
+ newWeatherForcast.innerHTML = weatherForecastHTML;
+
+ }
     
 
+
+function getWeatherForecast(coord){
+
+        let apiKey = "d5a8e815ad3352e76fb600d6bbd808c7";
+        let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coord.lat}&lon=${coord.lon}&appid=${apiKey}&units=metric`;
+        axios.get(apiUrl).then(displayWeatherForecast);
+      }
 
 
 
@@ -34,9 +78,6 @@ function displayTemperature(response){
 
     celsuis= Math.round(response.data.main.temp);
     
-    
-
-
     cityName.innerHTML = `${response.data.name}`; 
     weatherDescription.innerHTML = `${response.data.weather[0].description}`;
     temperatureNumber.innerHTML = `${Math.round(response.data.main.temp)}`;
@@ -45,7 +86,9 @@ function displayTemperature(response){
     humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
     wind.innerHTML = `Wind: ${Math.round(response.data.wind.speed)}m/s`;
     clouds.innerHTML = `Clouds: ${response.data.clouds.all}%`;
+    getWeatherForecast(response.data.coord);
 }
+
 
 
 let fahrenheit = document.querySelector("#Fah");
@@ -92,4 +135,12 @@ form.onsubmit = function handleSubmit(event){
     let cityInput  = document.querySelector("#cityInput");
     search(cityInput.value);
 };
+
+
+
+
+
+
+
+
 search("Beijing");

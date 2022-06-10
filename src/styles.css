@@ -95,6 +95,10 @@ footer{
     text-align: center;
     margin-top: 25px;
 }
-#tempMin{
-    opacity: 0.65;
+#weather-forecast-icon{
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+#weather-forecast-tempMin{
+    opacity: 0.75;
 }
