@@ -46,6 +46,9 @@
         </div>
         `;
 
+
+
+
      }
  });
 
@@ -53,6 +56,9 @@
  weatherForecastHTML = weatherForecastHTML+`</div>`;
  newWeatherForcast.innerHTML = weatherForecastHTML;
 
+ 
+
+ 
  }
     
 
@@ -63,6 +69,48 @@ function getWeatherForecast(coord){
         let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coord.lat}&lon=${coord.lon}&appid=${apiKey}&units=metric`;
         axios.get(apiUrl).then(displayWeatherForecast);
       }
+
+
+
+
+    let fahrenheit = document.querySelector("#Fah");
+    let cel = document.querySelector("#Celsius");
+    fahrenheit.onclick = function tempConvert() {
+      cel.classList.remove("active");
+      fahrenheit.classList.add("active");
+      
+      let tempNew = Math.round((`${celsuis}` * 9) / 5 + 32);
+      let temperatureNumber = document.querySelector(".temperature-number");
+      temperatureNumber.innerHTML = `${tempNew}`;
+    
+      };
+      
+      
+      cel.onclick = function tempConvert() {
+      cel.classList.add("active");
+      fahrenheit.classList.remove("active");
+      let temperatureNumber = document.querySelector(".temperature-number");
+         temperatureNumber.innerHTML = `${celsuis}`;
+      
+      
+      };
+   
+   
+    
+
+
+
+
+
+
+      
+
+
+
+
+        
+    
+        
 
 
 
@@ -87,31 +135,9 @@ function displayTemperature(response){
     wind.innerHTML = `Wind: ${Math.round(response.data.wind.speed)}m/s`;
     clouds.innerHTML = `Clouds: ${response.data.clouds.all}%`;
     getWeatherForecast(response.data.coord);
-}
-
-
-
-let fahrenheit = document.querySelector("#Fah");
-let cel = document.querySelector("#Celsius");
-fahrenheit.onclick = function tempConvert() {
-    cel.classList.remove("active");
-    fahrenheit.classList.add("active");
-
-
-  let tempNew = Math.round((`${celsuis}` * 9) / 5 + 32);
-  let temperatureNumber = document.querySelector(".temperature-number");
-  temperatureNumber.innerHTML = `${tempNew}`;
 };
 
 
-cel.onclick = function tempConvert() {
-    cel.classList.add("active");
-    fahrenheit.classList.remove("active");
-    let temperatureNumber = document.querySelector(".temperature-number");
-       temperatureNumber.innerHTML = `${celsuis}`;
-
-  
-};
 
 
 
