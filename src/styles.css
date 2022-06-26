@@ -2,16 +2,19 @@ body{
     font-family: Arial, Helvetica, sans-serif;
 }
 .wrapper{
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto;
+    margin-top: 100px;
    
 }
 .container{
-    max-width: 600px;
+    max-width: 700px;
     border: 1px solid whitesmoke;
     border-radius: 8px;
     display: block;
-    margin: 0 auto;
+    margin: 100 auto;
+    padding-top: 50px;
+    padding-bottom: 20px;
 
 }
 
@@ -103,3 +106,4 @@ footer{
 #weather-forecast-tempMin{
     opacity: 0.75;
 }
+@media(max)
